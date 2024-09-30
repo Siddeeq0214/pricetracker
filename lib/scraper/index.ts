@@ -7,7 +7,7 @@ import { extractCurrency, extractDescription, extractPrice } from '../utils';
 export async function scrapeAmazonProduct(url: string) {
   if(!url) return;
 
-  // BrightData proxy configuration
+  // BrightData config
   const username = String(process.env.BRIGHT_DATA_USERNAME);
   const password = String(process.env.BRIGHT_DATA_PASSWORD);
   const port = 22225;
@@ -58,7 +58,7 @@ export async function scrapeAmazonProduct(url: string) {
 
     const description = extractDescription($)
 
-    // Construct data object with scraped information
+    // Build data with scraped information
     const data = {
       url,
       currency: currency || '$',

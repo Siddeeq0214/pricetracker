@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: 'PriceTracker',
-  description: '',
+  description: 'With PriceTracker, users can easily monitor and find discounted items they want to purchase.',
 }
 
 export default function RootLayout({

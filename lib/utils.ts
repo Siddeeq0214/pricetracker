@@ -30,13 +30,13 @@ export function extractPrice(...elements: any) {
   return '';
 }
 
-// Extracts and returns the currency symbol from an element.
+// Extracts and returns the currency symbol.
 export function extractCurrency(element: any) {
   const currencyText = element.text().trim().slice(0, 1);
   return currencyText ? currencyText : "";
 }
 
-// Extracts description from two possible elements from amazon
+// Extracts description from from amazon
 export function extractDescription($: any) {
   // these are possible elements holding description of the product
   const selectors = [
@@ -56,7 +56,6 @@ export function extractDescription($: any) {
     }
   }
 
-  // If no matching elements were found, return an empty string
   return "";
 }
 
