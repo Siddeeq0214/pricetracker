@@ -59,6 +59,89 @@ export function extractDescription($: any) {
   return "";
 }
 
+// Extracts customer review count from Amazon
+export function extractReviewCount($: any) {
+  const reviewSelector = [
+    "#acrCustomerReviewText", // common selector for review count text
+    ".a-size-base .reviewCountTextLinkedHistogram", // alternative selector
+    // Add more selectors here if needed
+  ];
+
+  for (const selector of reviewSelector) {
+    const reviewElement = $(selector);
+
+    if (reviewElement.length > 0) {
+      // Extract the review text
+      const reviewText = reviewElement.text().trim();
+
+      // Remove any non-digit characters to get just the review count
+      const reviewCount = reviewText.replace(/[^\d]/g, '');
+
+      // If a valid review count was found, return it
+      if (reviewCount) {
+        return parseInt(reviewCount, 10);
+      }
+    }
+  }
+
+  // If no review count is found, return 0
+  return 0;
+}
+
+// Extracts star rating from Amazon
+export function extractStarRating($: any) {
+  const starSelectors = [
+    ".a-icon-alt", // Common selector for star rating text
+    ".reviewCountTextLinkedHistogram .a-declarative", // Alternative selector
+    // Add more selectors if needed
+  ];
+
+  for (const selector of starSelectors) {
+    const starElement = $(selector);
+
+    if (starElement.length > 0) {
+      // Extract the rating text, e.g., "4.5 out of 5 stars"
+      const starText = starElement.text().trim();
+
+      // Use a regular expression to extract the numeric star rating
+      const starRating = starText.match(/\d+(\.\d+)?/);
+
+      // If a valid star rating was found, return it as a number
+      if (starRating) {
+        return parseFloat(starRating[0]);
+      }
+    }
+  }
+
+  // If no star rating is found, return 0
+  return 0;
+}
+
+// Extracts the product category from Amazon
+export function extractCategory($: any) {
+  // These are possible elements holding the category of the product
+  const selectors = [
+    "#wayfinding-breadcrumbs_feature_div ul li", // Breadcrumb section for categories
+    ".nav-a-content", // Sometimes categories are listed in a navigation section
+    ".a-link-normal.a-color-tertiary", // Alternative category selector
+    // Add more selectors here if needed
+  ];
+
+  for (const selector of selectors) {
+    const elements = $(selector);
+    if (elements.length > 0) {
+      const categoryText = elements
+        .map((_: any, element: any) => $(element).text().trim())
+        .get()
+        .join(" > "); // Join categories with '>' to create a breadcrumb-like format
+      return categoryText;
+    }
+  }
+
+  return "Unknown Category"; // Fallback if no category is found
+}
+
+
 export function getHighestPrice(priceList: PriceHistoryItem[]) {
   let highestPrice = priceList[0];
 
