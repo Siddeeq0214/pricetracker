@@ -38,14 +38,6 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               <p className="text-[28px] text-secondary font-semibold">
                 {product.title}
               </p>
-
-              <Link
-                href={product.url}
-                target="_blank"
-                className="text-base text-black opacity-50"
-              >
-                Visit Product
-              </Link>
             </div>
 
             <div className="flex items-center gap-3">
@@ -167,14 +159,11 @@ const ProductDetails = async ({ params: { id } }: Props) => {
         </div>
 
         <button className="btn w-fit mx-auto flex items-center justify-center gap-3 min-w-[200px]">
-          <Image 
-            src="/assets/icons/bag.svg"
-            alt="check"
-            width={22}
-            height={22}
-          />
-
-          <Link href="/" className="text-base text-white">
+          <Link 
+            href={product.url} 
+            target="_blank"
+            className="text-base text-white"
+          >
             Buy Now
           </Link>
         </button>
