@@ -39,8 +39,9 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                 {product.title}
               </p>
             </div>
-
+          
             <div className="flex items-center gap-3">
+              {/*
               <div className="product-hearts">
                 <Image 
                   src="/assets/icons/red-heart.svg"
@@ -53,6 +54,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                   {product.reviewsCount}
                 </p>
               </div>
+              */}
 
               <div className="p-2 bg-white-200 rounded-10">
                 <Image 
