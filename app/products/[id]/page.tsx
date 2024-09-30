@@ -94,7 +94,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
                     height={16}
                   />
                   <p className="text-sm text-primary-orange font-semibold">
-                    {product.stars || '25'}
+                    {product.stars || 'N/A'}
                   </p>
                 </div>
 
@@ -164,7 +164,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
             target="_blank"
             className="text-base text-white"
           >
-            Buy Now
+            Visit Product
           </Link>
         </button>
       </div>
