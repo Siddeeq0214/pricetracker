@@ -67,7 +67,7 @@ export async function getAllProducts() {
   try {
     connectToDB();
 
-    const products = await Product.find();
+    const products = await Product.find().sort({ createdAt: -1 }).limit(3);
 
     return products;
   } catch (error) {
@@ -92,6 +92,24 @@ export async function getSimilarProducts(productId: string) {
     console.log(error);
   }
 }
+
+export async function getRecentProducts(limit: number = 10) {
+  try {
+    // Connect to the database
+    await connectToDB();
+
+    // Fetch recent products based on creation or update date
+    const recentProducts = await Product.find()
+      .sort({ updatedAt: -1 })  // Sort by the most recently updated products first
+      .limit(limit);            // Limit to the number of products you want to show
+
+    return recentProducts;
+  } catch (error) {
+    console.log("Error fetching recent products:", error);
+    return [];
+  }
+}
+
 
 export async function addUserEmailToProduct(productId: string, userEmail: string) {
   try {

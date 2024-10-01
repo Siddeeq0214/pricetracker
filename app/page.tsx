@@ -41,7 +41,7 @@ const Homepage = async () => {
       {/* Trending Section */}
       <section className="py-24 px-6 md:px-20 bg-gray-50">
         <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12">
-          Trending
+          Recently Searched Products
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {allProducts?.map((product) => (
