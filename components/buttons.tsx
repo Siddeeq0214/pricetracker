@@ -1,6 +1,7 @@
 "use client"; // Client-side component
 
 import Image from "next/image";
+import { useState } from "react";
 
 type Props = {
   productId: string;
@@ -8,9 +9,30 @@ type Props = {
 };
 
 const BookmarkAndShareButtons = ({ productId, productUrl }: Props) => {
-  const handleBookmark = () => {
-    console.log(`Bookmarking product with id: ${productId}`);
-    // Add bookmark logic here
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
+  const handleBookmark = async () => {
+    try {
+      console.log(`Bookmarking product with id: ${productId}`);
+      
+      // Make a POST request to save the product
+      const response = await fetch('/api/bookmark', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ productId }),
+      });
+
+      if (response.ok) {
+        setIsBookmarked(true);
+        console.log('Product bookmarked successfully');
+      } else {
+        console.error('Failed to bookmark product');
+      }
+    } catch (error) {
+      console.error('Error bookmarking product:', error);
+    }
   };
 
   const handleShare = () => {
