@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const navIcons = [
-  { src: '/assets/icons/recent.png', alt: 'recent', href: '/recent' }, // Add href for recent page
+  { src: '/assets/icons/recent.png', alt: 'recent', href: '/recent' },
+  {src: '/assets/icons/bookmark.png', alt: 'bookmark', href: '/bookmarks'},
   { src: '/assets/icons/user.svg', alt: 'user' },
 ]
 

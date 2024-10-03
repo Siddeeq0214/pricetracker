@@ -7,6 +7,8 @@ import { Product } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import BookmarkAndShareButtons from "@/components/buttons";
+
 
 type Props = {
   params: { id: string }
@@ -56,23 +58,11 @@ const ProductDetails = async ({ params: { id } }: Props) => {
               </div>
               */}
 
-              <div className="p-2 bg-white-200 rounded-10">
-                <Image 
-                  src="/assets/icons/bookmark.svg"
-                  alt="bookmark"
-                  width={20}
-                  height={20}
-                />
-              </div>
-
-              <div className="p-2 bg-white-200 rounded-10">
-                <Image 
-                  src="/assets/icons/share.svg"
-                  alt="share"
-                  width={20}
-                  height={20}
-                />
-              </div>
+              {/* Use the new BookmarkAndShareButtons component */}
+              <BookmarkAndShareButtons 
+                productId={product._id!}
+                productUrl={product.url}
+              />
             </div>
           </div>
 
@@ -171,7 +161,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           </Link>
         </button>
       </div>
-
+      {/*
       {similarProducts && similarProducts?.length > 0 && (
         <div className="py-14 flex flex-col gap-2 w-full">
           <p className="section-text">Similar Products</p>
@@ -183,6 +173,7 @@ const ProductDetails = async ({ params: { id } }: Props) => {
           </div>
         </div>
       )}
+      */}
     </div>
   )
 }
