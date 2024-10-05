@@ -60,7 +60,13 @@ export async function scrapeAmazonProduct(url: string) {
 
     const stars = extractStarRating($);
 
-    const description = extractDescription($)
+    // Extract the product description ("About this item" section)
+    const descriptionItems = $('#feature-bullets ul li')
+      .map((i, el) => $(el).text().trim())
+      .get();
+
+    const description = descriptionItems.join(' ');
+
 
     const category = extractCategory($);
 

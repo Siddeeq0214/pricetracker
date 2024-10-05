@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import SavedProductCard from "@/components/SavedProductCard";
@@ -31,21 +31,21 @@ const BookmarksPage = () => {
     fetchSavedProducts();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="text-center py-6">Loading...</p>;
+  if (error) return <p className="text-center text-red-600 py-6">{error}</p>;
 
   return (
-    <div className="container mx-auto py-16">
-      <h1 className="text-4xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 shadow-md rounded-lg py-4 px-8 text-center mb-12">
+    <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
+      <h1 className="text-3xl sm:text-4xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 shadow-md rounded-lg py-4 px-6 sm:px-8 text-center mb-8 sm:mb-12">
         Your Bookmarked Products
       </h1>
 
       {savedProducts.length === 0 ? (
         <div className="text-center text-gray-600">
-          <p className="text-xl">You have no saved products yet.</p>
+          <p className="text-lg sm:text-xl">You have no saved products yet.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Iterate over saved products and render the SavedProductCard */}
           {savedProducts.map((savedProduct) => (
             <div
@@ -62,4 +62,3 @@ const BookmarksPage = () => {
 };
 
 export default BookmarksPage;
-
