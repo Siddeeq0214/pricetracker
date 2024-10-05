@@ -30,7 +30,7 @@ const SavedProductCard = ({ savedProduct }: Props) => {
 
         <div className="flex justify-between">
           <p className="text-black opacity-50 text-lg capitalize">
-            {product.category || 'No Category'}
+            
           </p>
 
           <p className="text-black text-lg font-semibold">

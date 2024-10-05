@@ -36,27 +36,33 @@ export function extractCurrency(element: any) {
   return currencyText ? currencyText : "";
 }
 
-// Extracts description from from amazon
+// Extracts description from amazon
 export function extractDescription($: any) {
   // these are possible elements holding description of the product
   const selectors = [
-    ".a-unordered-list .a-list-item",
-    ".a-expander-content p",
-    // Add more selectors here if needed
+    "#productDescription p", // Product description section
+    "#feature-bullets ul li", // "About this item" bullets
+    ".a-expander-content p", // Expander content for descriptions
+    "#bookDescription_feature_div .a-expander-content", // For books or media
+    ".productDescriptionWrapper", // Fallback for older Amazon layouts
   ];
+
+  let descriptionItems: string[] = [];
 
   for (const selector of selectors) {
     const elements = $(selector);
     if (elements.length > 0) {
       const textContent = elements
         .map((_: any, element: any) => $(element).text().trim())
-        .get()
-        .join("\n");
-      return textContent;
+        .get();
+      
+      // Add the extracted content to the descriptionItems array
+      descriptionItems = [...descriptionItems, ...textContent];
     }
   }
 
-  return "";
+  // Join all extracted description items, removing any duplicates
+  return Array.from(new Set(descriptionItems)).join(' ');
 }
 
 // Extracts customer review count from Amazon
