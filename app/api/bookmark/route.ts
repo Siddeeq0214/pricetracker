@@ -42,6 +42,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Product not found" }, { status: 404 });
     }
 
+    // Check if the product has already been bookmarked
+    const existingBookmark = await SavedProduct.findOne({ productId });
+    if (existingBookmark) {
+      return NextResponse.json({
+        message: "Product already bookmarked",
+        data: existingBookmark,
+      }, { status: 409 }); // Status 409 for conflict
+    }
+
     // Save the product as bookmarked
     const savedProduct = new SavedProduct({ productId });
     await savedProduct.save();

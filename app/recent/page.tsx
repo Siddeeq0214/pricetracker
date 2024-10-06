@@ -23,11 +23,11 @@ const RecentProducts = async () => {
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
       {/* Fancy header with gradient and shadow */}
       <h2 className="text-3xl sm:text-4xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 shadow-md rounded-lg py-4 px-6 sm:px-8 text-center mb-8 sm:mb-12">
-        Recently Added Products
+        Recently Searched Products
       </h2>
 
       {/* Responsive grid layout for product cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
         {recentProducts.map((product) => (
           <div
             key={product._id}
