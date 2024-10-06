@@ -47,7 +47,7 @@ const Homepage = async () => {
           {allProducts?.map((product) => (
             <div
               key={product._id}
-              className="rounded-lg border border-gray-200 shadow-lg p-6 transition-transform duration-300 hover:scale-105"
+              /*className="rounded-lg border border-gray-200 shadow-lg p-6 transition-transform duration-300 hover:scale-105"*/
             >
               <ProductCard product={product} />
             </div>

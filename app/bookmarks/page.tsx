@@ -37,7 +37,7 @@ const BookmarksPage = () => {
   return (
     <div className="container mx-auto py-12 px-4 sm:px-6 lg:px-8">
       <h1 className="text-3xl sm:text-4xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 shadow-md rounded-lg py-4 px-6 sm:px-8 text-center mb-8 sm:mb-12">
-        Your Bookmarked Products
+        Saved Products
       </h1>
 
       {savedProducts.length === 0 ? (
@@ -45,12 +45,12 @@ const BookmarksPage = () => {
           <p className="text-lg sm:text-xl">You have no saved products yet.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {/* Iterate over saved products and render the SavedProductCard */}
           {savedProducts.map((savedProduct) => (
             <div
               key={savedProduct._id}
-              className="transform hover:scale-105 transition-transform duration-300"
+              /*className="transform hover:scale-105 transition-transform duration-300"*/
             >
               <SavedProductCard savedProduct={savedProduct} />
             </div>
